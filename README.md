@@ -1,7 +1,5 @@
-# Vue 3 + Vite
+# Dunk Rummy
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4c05c8b0-28a1-47a0-9252-ffb922b7c14a/deploy-status)](https://app.netlify.com/sites/dunk-rummy/deploys)
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+An app for tracking and visualizing Gin Rummy scores.
