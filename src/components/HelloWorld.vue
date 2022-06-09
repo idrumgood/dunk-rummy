@@ -4,7 +4,7 @@ import { ref, onMounted } from 'vue'
 const players = ref();
 
 function getPlayers() {
-  return fetch('../functions/get-all-players', {
+  return fetch('/.netlify/functions/get-all-players', {
     method: 'GET'
   }).then(response => {
     return response.json()
@@ -13,7 +13,7 @@ function getPlayers() {
 
 onMounted(() => {
   players = getPlayers();
-});
+}); 
 </script>
 
 <template>
