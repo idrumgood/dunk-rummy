@@ -4,11 +4,16 @@ import { ref } from 'vue';
 const playerName = ref(null);
 const createPlayer = async (e) => {
   e.preventDefault();
-  const response = await fetch('/.netlify/functions/create-player', {
-    body: JSON.stringify({ name: playerName.value.value }),
-    method: 'POST',
-  });
-  console.log(response);
+  try {
+    await fetch('/.netlify/functions/create-player', {
+      body: JSON.stringify({ name: playerName.value.value }),
+      method: 'POST',
+    });
+  } catch (err) {
+     console.error(err);
+  }
+
+  playerName.value.value = '';
 }
 </script>
 
