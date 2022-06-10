@@ -24,13 +24,5 @@
     "vite": "^2.9.9",
     "vite-plugin-vuetify": "^1.0.0-alpha.0",
     "vue-cli-plugin-vuetify": "~2.5.1"
-  },
-  "proxy": {
-    "/.netlify/functions": {
-      "target": "http://localhost:3000",
-      "pathRewrite": {
-        "^/\\.netlify/functions": ""
-      }
-    }
   }
 }
