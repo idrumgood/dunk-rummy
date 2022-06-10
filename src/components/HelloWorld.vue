@@ -1,17 +1,20 @@
 <script setup>
-const createPlayers = async () => {
-  const response = await fetch('/.netlify/functions/create-players');
-  console.log(response);
-}
-const createGames = async () => {
-  const response = await fetch('/.netlify/functions/create-games');
+const createPlayer = async () => {
+  const response = await fetch('/.netlify/functions/create-player', {
+    body: JSON.stringify({ name: this.$refs.playerName.value }),
+    method: 'POST',
+  });
   console.log(response);
 }
 </script>
 
 <template>
-  <button @click="createPlayers">Create Players</button>
-  <button @click="createGames">Create Games</button>
+  <form>
+    <h1>Create a new player</h1>
+    <label for="player-name">Player Name</label>
+    <input id="player-name" ref="playerName" type="text" />
+    <button @click="createPlayer">Create</button>
+  </form>
 </template>
 
 <style scoped>
