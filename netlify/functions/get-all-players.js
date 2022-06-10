@@ -9,7 +9,10 @@ exports.handler = (event, context, callback) => {
   client.query(
     q.Get(q.Ref(q.Collection('players'), '1'))
   )
-  .then((ret) => console.log(ret))
+  .then((ret) => ({
+    statusCode: 200,
+    body: ret,
+  }))
   .catch((err) => console.error(
     'Error: [%s] %s: %s',
     err.name,
