@@ -4,9 +4,11 @@
 
 <template>
   <v-app>
+    <nav-bar />
     <v-main>
-      <nav-bar />
-      <router-view />
+      <v-container fluid>
+        <router-view /> 
+      </v-container>
     </v-main>
   </v-app>
 </template>

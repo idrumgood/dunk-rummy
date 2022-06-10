@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <h1>Dunk Rummy</h1>
+  <h1>What will go here?</h1>
 </template>
 
 <style scoped>
