@@ -1,5 +1,6 @@
 <script setup>
-const createPlayer = async () => {
+const createPlayer = async (e) => {
+  e.preventDefault();
   const response = await fetch('/.netlify/functions/create-player', {
     body: JSON.stringify({ name: this.$refs.playerName.value }),
     method: 'POST',
