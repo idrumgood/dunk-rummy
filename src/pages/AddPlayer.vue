@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
-const playerName = ref(null);
+let playerName = ref(null);
 const createPlayer = async (e) => {
   e.preventDefault();
   try {
@@ -18,12 +18,17 @@ const createPlayer = async (e) => {
 </script>
 
 <template>
-  <form>
-    <h1>Create a new player</h1>
-    <label for="player-name">Player Name</label>
-    <input id="player-name" ref="playerName" type="text" />
-    <button @click="createPlayer">Create</button>
-  </form>
+  <v-card>
+    <v-form>
+      <v-card-title>Create a new player</v-card-title>
+      <v-card-text>
+        <v-text-field ref="playerName" label="Add a new player" required />
+      </v-card-text>
+      <v-card-actions>
+        <v-btn @click="createPlayer">Create</v-btn> 
+      </v-card-actions>
+    </v-form>
+  </v-card>
 </template>
 
 <style scoped>

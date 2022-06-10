@@ -6,7 +6,7 @@
   <v-app>
     <nav-bar />
     <v-main>
-      <v-container fluid>
+      <v-container>
         <router-view /> 
       </v-container>
     </v-main>
@@ -14,5 +14,4 @@
 </template>
 
 <style>
-
 </style>
