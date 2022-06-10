@@ -6,17 +6,10 @@ const client = new faunadb.Client({
 });
 
 exports.handler = (event, context, callback) => {
-  client.query(
-    q.Get(q.Ref(q.Collection('players'), '1'))
-  )
-  .then((ret) => ({
+  return callback(null, {
     statusCode: 200,
-    body: ret,
-  }))
-  .catch((err) => console.error(
-    'Error: [%s] %s: %s',
-    err.name,
-    err.message,
-    err.errors()[0].description,
-  ))
+    body: JSON.stringify({
+      data: '⊂◉‿◉つ'
+    })
+  })
 };
