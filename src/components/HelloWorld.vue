@@ -1,23 +1,17 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-
-const players = ref();
-
-function getPlayers() {
-  return fetch('/.netlify/functions/get-all-players', {
-    method: 'GET'
-  }).then(response => {
-    return response.json()
-  })
+const createPlayers = async () => {
+  const response = await fetch('/.netlify/functions/create-players');
+  console.log(response);
 }
-
-onMounted(() => {
-  players = getPlayers();
-}); 
+const createGames = async () => {
+  const response = await fetch('/.netlify/functions/create-games');
+  console.log(response);
+}
 </script>
 
 <template>
-  Player data {{ players}}
+  <button @click="createPlayers">Create Players</button>
+  <button @click="createGames">Create Games</button>
 </template>
 
 <style scoped>

@@ -15,5 +15,13 @@
     "@vitejs/plugin-vue": "^2.3.3",
     "netlify-lambda": "^2.0.15",
     "vite": "^2.9.9"
+  },
+  "proxy": {
+    "/.netlify/functions": {
+      "target": "http://localhost:3000",
+      "pathRewrite": {
+        "^/\\.netlify/functions": ""
+      }
+    }
   }
 }
