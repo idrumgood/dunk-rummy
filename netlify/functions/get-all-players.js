@@ -1,6 +1,6 @@
 const faunadb = require('faunadb');
 const q = faunadb.query;
-const handler = async (event) => {
+const handler = async () => {
   try {
     const client = new faunadb.Client({
       secret: process.env.FAUNADB_SERVER_SECRET,
