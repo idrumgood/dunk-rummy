@@ -15,7 +15,7 @@ const handler = async (event) => {
       console.log(`Player name ${name} alredy exists`);
       return {
         statusCode: 200,
-        body: { message: 'Player already exists. Please try a different name.' }
+        body: JSON.stringify({ message: 'Player already exists. Please try a different name.' }),
       }
     }
 
@@ -35,6 +35,7 @@ const handler = async (event) => {
       body: JSON.stringify(response),
     };
   } catch (error) {
+    console.error(error.toString());
     return { statusCode: 500, body: error.toString() };
   }
 };
