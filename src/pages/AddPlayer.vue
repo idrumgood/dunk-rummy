@@ -1,19 +1,24 @@
 <script setup>
 import { ref } from 'vue';
 
-let playerName = ref(null);
+let playerName = ref('');
 const createPlayer = async (e) => {
   e.preventDefault();
+
+  if(!playerName.value) {
+    return;
+  }
+
   try {
     await fetch('/.netlify/functions/create-player', {
-      body: JSON.stringify({ name: playerName.value.value }),
+      body: JSON.stringify({ name: playerName.value }),
       method: 'POST',
     });
   } catch (err) {
      console.error(err);
   }
 
-  playerName.value.value = '';
+  playerName.value = '';
 }
 </script>
 
@@ -22,7 +27,7 @@ const createPlayer = async (e) => {
     <v-form>
       <v-card-title>Create a new player</v-card-title>
       <v-card-text>
-        <v-text-field ref="playerName" label="Add a new player" required />
+        <v-text-field v-model="playerName" label="Add a new player" required />
       </v-card-text>
       <v-card-actions>
         <v-btn @click="createPlayer">Create</v-btn> 
