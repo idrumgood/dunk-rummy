@@ -12,11 +12,12 @@ const createPlayer = async (e) => {
   }
 
   try {
-    const response = await fetch('/.netlify/functions/create-player', {
+    let response = await fetch('/.netlify/functions/create-player', {
       body: JSON.stringify({ name: playerName.value }),
       method: 'POST',
     });
-    message = await response.json().message;
+    response = await response.json();
+    message = response.message;
   } catch (err) {
      console.error(err);
   }
