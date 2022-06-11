@@ -5,23 +5,17 @@ const handler = async (event) => {
     const client = new faunadb.Client({
       secret: process.env.FAUNADB_SERVER_SECRET,
     });
-    const response = await client.query(
-      q.Create(
-        q.Collection('Games'),
-        {
-          data: {
-            players: ['Amber', 'Bryan'],
-            points: [112, 97],
-            handWins: [3, 6],
-          },
-        },
-      )
-    )
+
+    const all_players = await client.query(q.Paginate(q.Match(q.Index('all_players'))));
+
+    console.log('All players: ', JSON.stringify(all_players));
+
     return {
       statusCode: 200,
-      body: JSON.stringify(response),
+      body: JSON.stringify(all_players),
     };
   } catch (error) {
+    console.error(error.toString());
     return { statusCode: 500, body: error.toString() };
   }
 };
