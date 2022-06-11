@@ -16,7 +16,7 @@ const createPlayer = async (e) => {
       body: JSON.stringify({ name: playerName.value }),
       method: 'POST',
     });
-    message = await response.json();
+    message = await response.json().message;
   } catch (err) {
      console.error(err);
   }

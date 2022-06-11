@@ -32,11 +32,11 @@ const handler = async (event) => {
     console.log('Created new player ', name);
     return {
       statusCode: 201,
-      body: JSON.stringify(response),
+      body: JSON.stringify({...response, message: `Successfully create ${name}`}),
     };
   } catch (error) {
     console.error(error.toString());
-    return { statusCode: 500, body: error.toString() };
+    return { statusCode: 500, body: JSON.stringify({ message: error.toString() })};
   }
 };
 
