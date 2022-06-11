@@ -15,7 +15,7 @@ const handler = async (event) => {
       console.log(`Player name ${name} alredy exists`);
       return {
         statusCode: 200,
-        body: 'Player already exists. Please try a different name.'
+        body: { message: 'Player already exists. Please try a different name.' }
       }
     }
 
