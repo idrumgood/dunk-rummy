@@ -6,13 +6,19 @@ const handler = async (event) => {
     const client = new faunadb.Client({
       secret: process.env.FAUNADB_SERVER_SECRET,
     });
+
     const all_players = await client.query(q.Paginate(q.Match(q.Index('all_player_names'))));
-    if (all_players.contains(name)) {
+
+    console.log('All players: ', JSON.stringify(all_players));
+
+    if (Object.values(all_players).contains(name)) {
+      console.log(`Player name ${name} alredy exists`);
       return {
         statusCode: 200,
         body: 'Player already exists. Please try a different name.'
       }
     }
+
     const response = await client.query(
       q.Create(
         q.Collection('Players'),
@@ -23,6 +29,7 @@ const handler = async (event) => {
         },
       )
     )
+    console.log('Created new player ', name);
     return {
       statusCode: 201,
       body: JSON.stringify(response),
