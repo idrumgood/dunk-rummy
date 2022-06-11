@@ -12,6 +12,11 @@ const routes = [
     name: "add player",
     component: () => import("./pages/AddPlayer.vue")
   },
+  {
+    path: "/add-game",
+    name: "add game",
+    component: () => import("./pages/AddGame.vue")
+  },
 ];
 
 const router = createRouter({

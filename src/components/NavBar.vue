@@ -4,7 +4,8 @@ import { ref } from 'vue';
 const drawer = ref(false);
 const items = ref([
   { title: 'Home', to: '/landing' },
-  { title: 'Add Player', to: '/add-player'}
+  { title: 'Add Player', to: '/add-player' },
+  { title: 'Add Game', to: '/add-game' }
 ])
 
 </script>
