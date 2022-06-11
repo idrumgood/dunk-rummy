@@ -5,16 +5,18 @@ let playerName = ref('');
 let message = ref('');
 const createPlayer = async (e) => {
   e.preventDefault();
+  message = '';
 
   if(!playerName.value) {
     return;
   }
 
   try {
-    message = await fetch('/.netlify/functions/create-player', {
+    const response = await fetch('/.netlify/functions/create-player', {
       body: JSON.stringify({ name: playerName.value }),
       method: 'POST',
     });
+    message = await response.json();
   } catch (err) {
      console.error(err);
   }
