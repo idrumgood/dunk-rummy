@@ -4,10 +4,7 @@ import { ref } from 'vue';
 let allPlayers = ref([]);
 const getAllPlayers = async (e) => {
   try {
-    const response = await fetch('/.netlify/functions/get-all-players', {
-      body: JSON.stringify({ name: playerName.value }),
-      method: 'GET',
-    });
+    const response = await fetch('/.netlify/functions/get-all-players');
     allPlayers = await response.json();
   } catch (err) {
      console.error(err);
