@@ -11,7 +11,7 @@ const handler = async (event) => {
 
     console.log('All players: ', JSON.stringify(all_players));
 
-    if (Object.values(all_players).contains(name)) {
+    if (all_players.data.contains(name)) {
       console.log(`Player name ${name} alredy exists`);
       return {
         statusCode: 200,
