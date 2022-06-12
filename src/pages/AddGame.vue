@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
-let allPlayers = ref([]);
+let allPlayers = ref();
 const getAllPlayers = async (e) => {
   try {
     const response = await fetch('/.netlify/functions/get-all-players');
@@ -17,7 +17,7 @@ const getAllPlayers = async (e) => {
     <v-form>
       <v-card-title>Create a new game</v-card-title>
       <v-card-text>
-        <p v-for="player in allPlayers">{{player.data.name}}</p>
+        <p v-for="player in allPlayers.data">{{player.name}}</p>
       </v-card-text>
       <v-card-actions>
         <v-btn @click="getAllPlayers">Get all players</v-btn> 
