@@ -6,7 +6,10 @@ const handler = async () => {
       secret: process.env.FAUNADB_SERVER_SECRET,
     });
 
-    const all_players = await client.query(q.Paginate(q.Match(q.Index('all_players'))));
+    const all_players = await client.query(q.Map(
+      q.Paginate(q.Documents(q.Collection('Players'))),
+      q.Lambda(x => q.Get(x))
+    ));
 
     console.log('All players: ', JSON.stringify(all_players));
 
