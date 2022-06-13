@@ -1,13 +1,12 @@
 <script setup>
-import { ref } from 'vue';
+import { reactive } from 'vue';
 
-let allPlayers = ref([]);
+let allPlayers = reactive([]);
 const getAllPlayers = async (e) => {
   try {
     let response = await fetch('/.netlify/functions/get-all-players');
     response = await response.json();
-    allPlayers = response.data;
-    console.log(allPlayers);
+    allPlayers.push(...response.data);
   } catch (err) {
      console.error(err);
   }
