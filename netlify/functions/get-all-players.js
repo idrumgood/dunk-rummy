@@ -11,11 +11,11 @@ const handler = async () => {
       q.Lambda(x => q.Get(x))
     ));
 
-    console.log('All players: ', JSON.stringify(all_players));
+    ;
 
     return {
       statusCode: 200,
-      body: JSON.stringify(all_players),
+      body: JSON.stringify(all_players.data.map((player) => ({ name: player.data.name, id: player.ref.id }))),
     };
   } catch (error) {
     console.error(error.toString());

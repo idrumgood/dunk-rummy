@@ -6,7 +6,7 @@ const getAllPlayers = async (e) => {
   try {
     let response = await fetch('/.netlify/functions/get-all-players');
     response = await response.json();
-    allPlayers.push(...response.data);
+    allPlayers.push(...response);
   } catch (err) {
      console.error(err);
   }
@@ -18,7 +18,7 @@ const getAllPlayers = async (e) => {
     <v-form>
       <v-card-title>Create a new game</v-card-title>
       <v-card-text>
-        <p v-for="player in allPlayers">{{player.data.name}} has ID {{player.ref['@ref'].id}}</p>
+        <p v-for="player in allPlayers">{{player.name}} has ID {{player.id}}</p>
       </v-card-text>
       <v-card-actions>
         <v-btn @click="getAllPlayers">Get all players</v-btn> 
