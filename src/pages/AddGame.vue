@@ -9,7 +9,7 @@ let player2 = ref();
 let player2Score = ref(0);
 let player2HandWins = ref(0);
 
-const getAllPlayers = async (e) => {
+const getAllPlayers = async () => {
   try {
     let response = await fetch('/.netlify/functions/get-all-players');
     response = await response.json();
@@ -19,7 +19,26 @@ const getAllPlayers = async (e) => {
   }
 }
 
-const submitGame = () => console.log('Game submitted');
+const submitGame = async (e) => {
+  e.preventDefault();
+  try {
+    let response = await fetch('/.netlify/functions/create-game', {
+      body: JSON.stringify({ 
+        player1: player1.value,
+        player1Score: player1Score.value,
+        player1HandWins: player1HandWins.value,
+        player2: player2.value,
+        player2Score: player2Score.value,
+        player2HandWins: player2HandWins.value,
+      }),
+      method: 'POST',
+    });
+    response = await response.json();
+    console.log(response);
+  } catch(err) {
+    console.error(err);
+  }
+}
 
 onMounted(async () => {
   await getAllPlayers();
@@ -69,7 +88,7 @@ onMounted(async () => {
         ></v-text-field>
       </v-card-text>
       <v-card-actions>
-        <v-btn @click="submitGame">Get all players</v-btn> 
+        <v-btn @click="submitGame">Create Game</v-btn> 
       </v-card-actions>
     </v-card>
   </v-form>
